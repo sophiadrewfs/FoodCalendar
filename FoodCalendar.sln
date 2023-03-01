@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodCalendar", "FoodCalendar\FoodCalendar.csproj", "{8618ED33-A677-405B-94A7-1EFC86451A33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8618ED33-A677-405B-94A7-1EFC86451A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8618ED33-A677-405B-94A7-1EFC86451A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8618ED33-A677-405B-94A7-1EFC86451A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8618ED33-A677-405B-94A7-1EFC86451A33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {864D6158-0226-48A5-B6CF-ECAED351517C}
+	EndGlobalSection
+EndGlobal
