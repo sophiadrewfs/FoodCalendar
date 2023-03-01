@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Globalization;
 
 namespace FoodCalendar.Pages
 {
@@ -14,6 +14,8 @@ namespace FoodCalendar.Pages
 
         public void OnGet()
         {
+            string dateTime = DateTime.Now.ToString("d", new CultureInfo("en-US"));
+            ViewData["TimeStamp"] = dateTime;
         }
     }
 }
