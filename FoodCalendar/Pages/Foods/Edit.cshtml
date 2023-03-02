@@ -30,6 +30,11 @@
                 <span asp-validation-for="Food.Type" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Food.DishType" class="control-label"></label>
+                <option asp-for="Food.DishType" class="form-control" />
+                <span asp-validation-for="Food.DishType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Food.NumofPeople" class="control-label"></label>
                 <input asp-for="Food.NumofPeople" class="form-control" />
                 <span asp-validation-for="Food.NumofPeople" class="text-danger"></span>

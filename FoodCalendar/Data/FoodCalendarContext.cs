@@ -15,5 +15,7 @@ namespace FoodCalendar.Data
         }
 
         public DbSet<FoodCalendar.Models.Food> Food { get; set; } = default!;
+
+        public DbSet<FoodCalendar.Models.DishType> DishType { get; set; }
     }
 }

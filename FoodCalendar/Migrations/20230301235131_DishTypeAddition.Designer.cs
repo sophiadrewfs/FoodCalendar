@@ -4,6 +4,7 @@ using FoodCalendar.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodCalendar.Migrations
 {
     [DbContext(typeof(FoodCalendarContext))]
-    partial class FoodCalendarContextModelSnapshot : ModelSnapshot
+    [Migration("20230301235131_DishTypeAddition")]
+    partial class DishTypeAddition
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +32,7 @@ namespace FoodCalendar.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("DishTypeName")
+                    b.Property<string>("DishName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
