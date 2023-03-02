@@ -14,15 +14,20 @@ namespace FoodCalendar.Pages.Foods
     public class EditModel : PageModel
     {
         private readonly FoodCalendar.Data.FoodCalendarContext _context;
-
+        public SelectList DishTypeSL { get; set; }
+        public void PopulateDishTypeDropDownList(FoodCalendar.Data.FoodCalendarContext context, object selectDishType = null)
+        {
+            var dishtypequery = from d in context.DishType orderby d.DishTypeName select d;
+            DishTypeSL = new SelectList(dishtypequery.AsNoTracking(), nameof(DishType.Id), nameof(DishType.DishTypeName), selectDishType);
+        }
         public EditModel(FoodCalendar.Data.FoodCalendarContext context)
         {
             _context = context;
         }
-
         [BindProperty]
         public Food Food { get; set; } = default!;
-
+        [BindProperty]
+        public DishType DishType { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Food == null)

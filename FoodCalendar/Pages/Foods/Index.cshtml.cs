@@ -19,7 +19,8 @@ namespace FoodCalendar.Pages.Foods
             _context = context;
         }
 
-        public IList<Food> Food { get;set; } = default!;
+        public IList<Food> Food { get; set; } = default!;
+        public IList<DishType> DishType { get; set; } = default!;
 
         public async Task OnGetAsync()
         {

@@ -17,10 +17,13 @@
                 @Html.DisplayNameFor(model => model.Food[0].FoodName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].lastAte)
+                @Html.DisplayNameFor(model => model.Food[0].LastAte)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Food[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food[0].DishType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Food[0].NumofPeople)
@@ -35,10 +38,13 @@
                 @Html.DisplayFor(modelItem => item.FoodName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.lastAte)
+                @Html.DisplayFor(modelItem => item.LastAte)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DishType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumofPeople)
