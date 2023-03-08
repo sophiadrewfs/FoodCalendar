@@ -24,16 +24,10 @@
             @Html.DisplayFor(model => model.Food.LastAte)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Food.Type)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Food.Type)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Food.DishType)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Food.DishType)
+            @Html.DisplayFor(model => model.Food.DishType.DishTypeName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Food.NumofPeople)

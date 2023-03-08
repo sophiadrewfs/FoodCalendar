@@ -28,14 +28,11 @@ namespace FoodCalendar.Pages.Foods
                 return NotFound();
             }
 
-            var food = await _context.Food.FirstOrDefaultAsync(m => m.Id == id);
-            if (food == null)
+            //var food = await _context.Food.FirstOrDefaultAsync(m => m.Id == id);
+            Food = await _context.Food.Include(c => c.DishType).FirstOrDefaultAsync(m => m.Id == id);
+            if (Food == null)
             {
                 return NotFound();
-            }
-            else 
-            {
-                Food = food;
             }
             return Page();
         }

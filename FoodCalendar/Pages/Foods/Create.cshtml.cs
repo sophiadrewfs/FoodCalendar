@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FoodCalendar.Data;
 using FoodCalendar.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace FoodCalendar.Pages.Foods
 {
@@ -15,13 +14,6 @@ namespace FoodCalendar.Pages.Foods
     {
         private readonly FoodCalendar.Data.FoodCalendarContext _context;
 
-        public SelectList DishTypeSL { get; set; }
-
-        public void PopulateDishTypeDropDownList(FoodCalendar.Data.FoodCalendarContext context, object selectDishType = null)
-        {
-            var dishtypequery = from d in context.DishType orderby d.DishTypeName select d;
-            DishTypeSL = new SelectList(dishtypequery.AsNoTracking(), nameof(DishType.Id), nameof(DishType.DishTypeName), selectDishType);
-        }
         public CreateModel(FoodCalendar.Data.FoodCalendarContext context)
         {
             _context = context;
@@ -29,15 +21,14 @@ namespace FoodCalendar.Pages.Foods
 
         public IActionResult OnGet()
         {
-            PopulateDishTypeDropDownList(_context);
+        ViewData["TypeId"] = new SelectList(_context.DishType, "Id", "DishTypeName");
             return Page();
         }
 
         [BindProperty]
         public Food Food { get; set; }
+        
 
-        [BindProperty]
-        public DishType DishType { get; set; }
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {

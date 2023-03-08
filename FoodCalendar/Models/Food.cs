@@ -10,8 +10,8 @@ namespace FoodCalendar.Models
         public string? FoodName { get; set; }
         [DataType(DataType.Date)]
         public DateTime LastAte { get; set; }
-        public string? Type { get; set; }
-        //[ForeignKey("DishType")]
+        public int TypeId { get; set; }
+        [ForeignKey("TypeId")]
         public DishType? DishType { get; set; } 
         public int NumofPeople { get; set; }
     }

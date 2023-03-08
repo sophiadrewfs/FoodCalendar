@@ -47,24 +47,21 @@ namespace FoodCalendar.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("DishTypeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FoodName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastAte")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("NumofPeople")
                         .HasColumnType("int");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("lastAte")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DishTypeId");
+                    b.HasIndex("TypeId");
 
                     b.ToTable("Food");
                 });
@@ -73,7 +70,9 @@ namespace FoodCalendar.Migrations
                 {
                     b.HasOne("FoodCalendar.Models.DishType", "DishType")
                         .WithMany()
-                        .HasForeignKey("DishTypeId");
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("DishType");
                 });
