@@ -4,6 +4,7 @@ using FoodCalendar.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodCalendar.Migrations
 {
     [DbContext(typeof(FoodCalendarContext))]
-    partial class FoodCalendarContextModelSnapshot : ModelSnapshot
+    [Migration("20230307234151_Create1")]
+    partial class Create1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +57,6 @@ namespace FoodCalendar.Migrations
 
                     b.Property<int>("NumofPeople")
                         .HasColumnType("int");
-
-                    b.Property<string>("Recipe")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeId")
                         .HasColumnType("int");

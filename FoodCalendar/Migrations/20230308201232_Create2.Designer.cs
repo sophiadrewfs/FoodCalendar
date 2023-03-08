@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodCalendar.Migrations
 {
     [DbContext(typeof(FoodCalendarContext))]
-    [Migration("20230301214503_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230308201232_Create2")]
+    partial class Create2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,23 @@ namespace FoodCalendar.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("FoodCalendar.Models.DishType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("DishTypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DishType");
+                });
 
             modelBuilder.Entity("FoodCalendar.Models.Food", b =>
                 {
@@ -35,18 +52,34 @@ namespace FoodCalendar.Migrations
                     b.Property<string>("FoodName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("LastAte")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("NumofPeople")
                         .HasColumnType("int");
 
-                    b.Property<string>("Type")
+                    b.Property<string>("Recipe")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("lastAte")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TypeId");
+
                     b.ToTable("Food");
+                });
+
+            modelBuilder.Entity("FoodCalendar.Models.Food", b =>
+                {
+                    b.HasOne("FoodCalendar.Models.DishType", "DishType")
+                        .WithMany()
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DishType");
                 });
 #pragma warning restore 612, 618
         }

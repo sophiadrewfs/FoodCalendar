@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FoodCalendar.Data;
 using FoodCalendar.Models;
 
-namespace FoodCalendar.Pages.Foods
+namespace FoodCalendar.Pages.DishTypes
 {
     public class IndexModel : PageModel
     {
@@ -19,14 +19,13 @@ namespace FoodCalendar.Pages.Foods
             _context = context;
         }
 
-        public IList<Food> Food { get;set; } = default!;
+        public IList<DishType> DishType { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Food != null)
+            if (_context.DishType != null)
             {
-                Food = await _context.Food
-                .Include(f => f.DishType).ToListAsync();
+                DishType = await _context.DishType.ToListAsync();
             }
         }
     }

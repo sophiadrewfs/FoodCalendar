@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FoodCalendar.Data;
 using FoodCalendar.Models;
 
-namespace FoodCalendar.Pages.Foods
+namespace FoodCalendar.Pages.DishTypes
 {
     public class DeleteModel : PageModel
     {
@@ -20,36 +20,40 @@ namespace FoodCalendar.Pages.Foods
         }
 
         [BindProperty]
-      public Food Food { get; set; }
+      public DishType DishType { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Food == null)
+            if (id == null || _context.DishType == null)
             {
                 return NotFound();
             }
 
-            //var food = await _context.Food.FirstOrDefaultAsync(m => m.Id == id);
-            Food = await _context.Food.Include(c => c.DishType).FirstOrDefaultAsync(m => m.Id == id);
-            if (Food == null)
+            var dishtype = await _context.DishType.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (dishtype == null)
             {
                 return NotFound();
+            }
+            else 
+            {
+                DishType = dishtype;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Food == null)
+            if (id == null || _context.DishType == null)
             {
                 return NotFound();
             }
-            var food = await _context.Food.FindAsync(id);
+            var dishtype = await _context.DishType.FindAsync(id);
 
-            if (food != null)
+            if (dishtype != null)
             {
-                Food = food;
-                _context.Food.Remove(Food);
+                DishType = dishtype;
+                _context.DishType.Remove(DishType);
                 await _context.SaveChangesAsync();
             }
 

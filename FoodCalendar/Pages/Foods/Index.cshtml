@@ -17,13 +17,16 @@
                 @Html.DisplayNameFor(model => model.Food[0].FoodName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].lastAte)
+                @Html.DisplayNameFor(model => model.Food[0].LastAte)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].Type)
+                @Html.DisplayNameFor(model => model.Food[0].DishType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Food[0].NumofPeople)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food[0].Recipe)
             </th>
             <th></th>
         </tr>
@@ -35,14 +38,17 @@
                 @Html.DisplayFor(modelItem => item.FoodName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.lastAte)
+                @Html.DisplayFor(modelItem => item.LastAte)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                    @Html.DisplayFor(modelItem => item.DishType.DishTypeName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumofPeople)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recipe)
+                </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |

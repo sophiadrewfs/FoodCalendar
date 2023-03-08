@@ -20,19 +20,24 @@
                 <span asp-validation-for="Food.FoodName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Food.lastAte" class="control-label"></label>
-                <input asp-for="Food.lastAte" class="form-control" />
-                <span asp-validation-for="Food.lastAte" class="text-danger"></span>
+                <label asp-for="Food.LastAte" class="control-label"></label>
+                <input asp-for="Food.LastAte" class="form-control" />
+                <span asp-validation-for="Food.LastAte" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Food.Type" class="control-label"></label>
-                <input asp-for="Food.Type" class="form-control" />
-                <span asp-validation-for="Food.Type" class="text-danger"></span>
+                <label asp-for="Food.TypeId" class="control-label"></label>
+                <select asp-for="Food.TypeId" class="form-control" asp-items="ViewBag.TypeId"></select>
+                <span asp-validation-for="Food.TypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Food.NumofPeople" class="control-label"></label>
                 <input asp-for="Food.NumofPeople" class="form-control" />
                 <span asp-validation-for="Food.NumofPeople" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Food.Recipe" class="control-label"></label>
+                <input asp-for="Food.Recipe" class="form-control" />
+                <span asp-validation-for="Food.Recipe" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

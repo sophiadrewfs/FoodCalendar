@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using FoodCalendar.Data;
 using FoodCalendar.Models;
 
-namespace FoodCalendar.Pages.Foods
+namespace FoodCalendar.Pages.DishTypes
 {
     public class CreateModel : PageModel
     {
@@ -21,12 +21,11 @@ namespace FoodCalendar.Pages.Foods
 
         public IActionResult OnGet()
         {
-        ViewData["TypeId"] = new SelectList(_context.DishType, "Id", "DishTypeName");
             return Page();
         }
 
         [BindProperty]
-        public Food Food { get; set; }
+        public DishType DishType { get; set; }
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -37,7 +36,7 @@ namespace FoodCalendar.Pages.Foods
                 return Page();
             }
 
-            _context.Food.Add(Food);
+            _context.DishType.Add(DishType);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using FoodCalendar.Data;
 using FoodCalendar.Models;
 
-namespace FoodCalendar.Pages.Foods
+namespace FoodCalendar.Pages.DishTypes
 {
     public class EditModel : PageModel
     {
@@ -21,22 +21,21 @@ namespace FoodCalendar.Pages.Foods
         }
 
         [BindProperty]
-        public Food Food { get; set; } = default!;
+        public DishType DishType { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Food == null)
+            if (id == null || _context.DishType == null)
             {
                 return NotFound();
             }
 
-            var food =  await _context.Food.FirstOrDefaultAsync(m => m.Id == id);
-            if (food == null)
+            var dishtype =  await _context.DishType.FirstOrDefaultAsync(m => m.Id == id);
+            if (dishtype == null)
             {
                 return NotFound();
             }
-            Food = food;
-           ViewData["TypeId"] = new SelectList(_context.DishType, "Id", "DishTypeName");
+            DishType = dishtype;
             return Page();
         }
 
@@ -49,7 +48,7 @@ namespace FoodCalendar.Pages.Foods
                 return Page();
             }
 
-            _context.Attach(Food).State = EntityState.Modified;
+            _context.Attach(DishType).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +56,7 @@ namespace FoodCalendar.Pages.Foods
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FoodExists(Food.Id))
+                if (!DishTypeExists(DishType.Id))
                 {
                     return NotFound();
                 }
@@ -70,9 +69,9 @@ namespace FoodCalendar.Pages.Foods
             return RedirectToPage("./Index");
         }
 
-        private bool FoodExists(int id)
+        private bool DishTypeExists(int id)
         {
-          return _context.Food.Any(e => e.Id == id);
+          return _context.DishType.Any(e => e.Id == id);
         }
     }
 }
